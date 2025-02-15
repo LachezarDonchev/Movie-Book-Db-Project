@@ -8,9 +8,9 @@ namespace ProjectMovieBookDB.Controllers;
 [ApiController]
 public class MoviesController : ControllerBase
 {
-    private readonly BookCatalogContext _context;
+    private readonly BookMovieCatalogContext _context;
 
-    public MoviesController(BookCatalogContext context)
+    public MoviesController(BookMovieCatalogContext context)
     {
         _context = context;
     }
