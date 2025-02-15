@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectMovieBookDB.Models;
 
@@ -11,18 +11,18 @@ public class BooksController : ControllerBase
     private readonly BookMovieCatalogContext _context;
 
     /// <summary>
-    /// Конструктор на контролера, който приема контекста на базата данни.
+    /// Constructor of the controller that accepts the database context.
     /// </summary>
-    /// <param name="context">Контекст на базата данни за работа с книги.</param>
+    /// <param name="context">Database context for working with books.</param>
     public BooksController(BookMovieCatalogContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Извлича всички книги от базата данни.
+    /// Retrieves all books from the database.
     /// </summary>
-    /// <returns>Списък с всички книги и техните автори и жанрове.</returns>
+    /// <returns>List of all books and their authors and genres.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
     {
@@ -30,10 +30,10 @@ public class BooksController : ControllerBase
     }
 
     /// <summary>
-    /// Извлича конкретна книга по ID.
+    /// Retrieves a specific book by ID.
     /// </summary>
-    /// <param name="id">ID на книгата, която ще се извлече.</param>
-    /// <returns>Книга с нейния автор и жанрове или NotFound, ако не е намерена.</returns>
+    /// <param name="id">ID of the book to be retrieved.</param>
+    /// <returns>Book with its author and genres or NotFound if not found.</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> GetBook(int id)
     {
@@ -47,10 +47,10 @@ public class BooksController : ControllerBase
     }
 
     /// <summary>
-    /// Създава нова книга в базата данни.
+    /// Creates a new book in the database.
     /// </summary>
-    /// <param name="book">Обект с информация за новата книга.</param>
-    /// <returns>Новосъздадена книга със статус 201 Created.</returns>
+    /// <param name="book">Object containing information about the new book.</param>
+    /// <returns>Newly created book with status 201 Created.</returns>
     [HttpPost]
     public async Task<ActionResult<Book>> CreateBook(Book book)
     {
@@ -60,11 +60,11 @@ public class BooksController : ControllerBase
     }
 
     /// <summary>
-    /// Актуализира съществуваща книга по ID.
+    /// Updates an existing book by ID.
     /// </summary>
-    /// <param name="id">ID на книгата, която ще се актуализира.</param>
-    /// <param name="book">Обект с новата информация за книгата.</param>
-    /// <returns>NoContent (HTTP 204) след успешна актуализация.</returns>
+    /// <param name="id">ID of the book to be updated.</param>
+    /// <param name="book">Object containing the updated book information.</param>
+    /// <returns>NoContent (HTTP 204) after successful update.</returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateBook(int id, Book book)
     {
@@ -77,10 +77,10 @@ public class BooksController : ControllerBase
     }
 
     /// <summary>
-    /// Изтрива книга от базата данни по ID.
+    /// Deletes a book from the database by ID.
     /// </summary>
-    /// <param name="id">ID на книгата, която ще бъде изтрита.</param>
-    /// <returns>NoContent (HTTP 204) след успешно изтриване.</returns>
+    /// <param name="id">ID of the book to be deleted.</param>
+    /// <returns>NoContent (HTTP 204) after successful deletion.</returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBook(int id)
     {
