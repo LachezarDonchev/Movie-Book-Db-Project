@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectMovieBookDB.Models;
 
@@ -11,18 +11,18 @@ public class DirectorsController : ControllerBase
     private readonly BookMovieCatalogContext _context;
 
     /// <summary>
-    /// Конструктор на контролера, който приема контекста на базата данни.
+    /// Constructor of the controller that accepts the database context.
     /// </summary>
-    /// <param name="context">Контекст на базата данни за работа с режисьори.</param>
+    /// <param name="context">Database context for working with directors.</param>
     public DirectorsController(BookMovieCatalogContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Извлича всички режисьори от базата данни.
+    /// Retrieves all directors from the database.
     /// </summary>
-    /// <returns>Списък с всички режисьори и техните филми.</returns>
+    /// <returns>List of all directors and their movies.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Director>>> GetDirectors()
     {
@@ -30,10 +30,10 @@ public class DirectorsController : ControllerBase
     }
 
     /// <summary>
-    /// Извлича конкретен режисьор по ID.
+    /// Retrieves a specific director by ID.
     /// </summary>
-    /// <param name="id">ID на режисьора, който ще се извлече.</param>
-    /// <returns>Режисьор с неговите филми или NotFound, ако не е намерен.</returns>
+    /// <param name="id">ID of the director to be retrieved.</param>
+    /// <returns>Director with their movies or NotFound if not found.</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<Director>> GetDirector(int id)
     {
@@ -47,10 +47,10 @@ public class DirectorsController : ControllerBase
     }
 
     /// <summary>
-    /// Създава нов режисьор в базата данни.
+    /// Creates a new director in the database.
     /// </summary>
-    /// <param name="director">Обект с информация за новия режисьор.</param>
-    /// <returns>Новосъздаден режисьор със статус 201 Created.</returns>
+    /// <param name="director">Object containing information about the new director.</param>
+    /// <returns>Newly created director with status 201 Created.</returns>
     [HttpPost]
     public async Task<ActionResult<Director>> CreateDirector(Director director)
     {
@@ -60,11 +60,11 @@ public class DirectorsController : ControllerBase
     }
 
     /// <summary>
-    /// Актуализира съществуващ режисьор по ID.
+    /// Updates an existing director by ID.
     /// </summary>
-    /// <param name="id">ID на режисьора, който ще се актуализира.</param>
-    /// <param name="director">Обект с новата информация за режисьора.</param>
-    /// <returns>NoContent (HTTP 204) след успешна актуализация.</returns>
+    /// <param name="id">ID of the director to be updated.</param>
+    /// <param name="director">Object containing the updated director information.</param>
+    /// <returns>NoContent (HTTP 204) after successful update.</returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateDirector(int id, Director director)
     {
@@ -77,10 +77,10 @@ public class DirectorsController : ControllerBase
     }
 
     /// <summary>
-    /// Изтрива режисьор от базата данни по ID.
+    /// Deletes a director from the database by ID.
     /// </summary>
-    /// <param name="id">ID на режисьора, който ще бъде изтрит.</param>
-    /// <returns>NoContent (HTTP 204) след успешно изтриване.</returns>
+    /// <param name="id">ID of the director to be deleted.</param>
+    /// <returns>NoContent (HTTP 204) after successful deletion.</returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDirector(int id)
     {
