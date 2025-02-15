@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectMovieBookDB.Models;
 
@@ -11,18 +11,18 @@ public class AuthorsController : ControllerBase
     private readonly BookMovieCatalogContext _context;
 
     /// <summary>
-    /// Конструктор на контролера, който приема контекста на базата данни.
+    /// Constructor of the controller that accepts the database context.
     /// </summary>
-    /// <param name="context">Контекст на базата данни за работа с автори.</param>
+    /// <param name="context">Database context for working with authors.</param>
     public AuthorsController(BookMovieCatalogContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Извлича всички автори от базата данни.
+    /// Retrieves all authors from the database.
     /// </summary>
-    /// <returns>Списък с всички автори и техните книги.</returns>
+    /// <returns>List of all authors and their books.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
     {
@@ -30,10 +30,10 @@ public class AuthorsController : ControllerBase
     }
 
     /// <summary>
-    /// Извлича конкретен автор по ID.
+    /// Retrieves a specific author by ID.
     /// </summary>
-    /// <param name="id">ID на автора, който ще се извлече.</param>
-    /// <returns>Автор с неговите книги или NotFound, ако не е намерен.</returns>
+    /// <param name="id">ID of the author to be retrieved.</param>
+    /// <returns>Author with their books or NotFound if not found.</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<Author>> GetAuthor(int id)
     {
@@ -47,10 +47,10 @@ public class AuthorsController : ControllerBase
     }
 
     /// <summary>
-    /// Създава нов автор в базата данни.
+    /// Creates a new author in the database.
     /// </summary>
-    /// <param name="author">Обект с информация за новия автор.</param>
-    /// <returns>Новосъздаден автор със статус 201 Created.</returns>
+    /// <param name="author">Object containing information about the new author.</param>
+    /// <returns>Newly created author with status 201 Created.</returns>
     [HttpPost]
     public async Task<ActionResult<Author>> CreateAuthor(Author author)
     {
@@ -60,11 +60,11 @@ public class AuthorsController : ControllerBase
     }
 
     /// <summary>
-    /// Актуализира съществуващ автор по ID.
+    /// Updates an existing author by ID.
     /// </summary>
-    /// <param name="id">ID на автора, който ще се актуализира.</param>
-    /// <param name="author">Обект с новата информация за автора.</param>
-    /// <returns>NoContent (HTTP 204) след успешна актуализация.</returns>
+    /// <param name="id">ID of the author to be updated.</param>
+    /// <param name="author">Object containing the updated author information.</param>
+    /// <returns>NoContent (HTTP 204) after successful update.</returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateAuthor(int id, Author author)
     {
@@ -77,10 +77,10 @@ public class AuthorsController : ControllerBase
     }
 
     /// <summary>
-    /// Изтрива автор от базата данни по ID.
+    /// Deletes an author from the database by ID.
     /// </summary>
-    /// <param name="id">ID на автора, който ще бъде изтрит.</param>
-    /// <returns>NoContent (HTTP 204) след успешно изтриване.</returns>
+    /// <param name="id">ID of the author to be deleted.</param>
+    /// <returns>NoContent (HTTP 204) after successful deletion.</returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAuthor(int id)
     {
