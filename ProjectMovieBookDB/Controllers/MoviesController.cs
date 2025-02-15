@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectMovieBookDB.Models;
 
@@ -11,18 +11,18 @@ public class MoviesController : ControllerBase
     private readonly BookMovieCatalogContext _context;
 
     /// <summary>
-    /// Конструктор на контролера, който приема контекста на базата данни.
+    /// Constructor of the controller that accepts the database context.
     /// </summary>
-    /// <param name="context">Контекст на базата данни за работа с филми.</param>
+    /// <param name="context">Database context for working with movies.</param>
     public MoviesController(BookMovieCatalogContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Извлича всички филми от базата данни.
+    /// Retrieves all movies from the database.
     /// </summary>
-    /// <returns>Списък с всички филми, включително режисьора и жанровете.</returns>
+    /// <returns>A list of all movies, including the director and genres.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
     {
@@ -30,10 +30,10 @@ public class MoviesController : ControllerBase
     }
 
     /// <summary>
-    /// Извлича конкретен филм по ID.
+    /// Retrieves a specific movie by ID.
     /// </summary>
-    /// <param name="id">ID на филма, който ще се извлече.</param>
-    /// <returns>Филм с неговите режисьор и жанрове или NotFound, ако не е намерен.</returns>
+    /// <param name="id">The ID of the movie to be retrieved.</param>
+    /// <returns>A movie with its director and genres, or NotFound if not found.</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<Movie>> GetMovie(int id)
     {
@@ -47,10 +47,10 @@ public class MoviesController : ControllerBase
     }
 
     /// <summary>
-    /// Създава нов филм в базата данни.
+    /// Creates a new movie in the database.
     /// </summary>
-    /// <param name="movie">Обект с информация за новия филм.</param>
-    /// <returns>Новосъздаден филм със статус 201 Created.</returns>
+    /// <param name="movie">An object with information about the new movie.</param>
+    /// <returns>The newly created movie with status 201 Created.</returns>
     [HttpPost]
     public async Task<ActionResult<Movie>> CreateMovie(Movie movie)
     {
@@ -60,11 +60,11 @@ public class MoviesController : ControllerBase
     }
 
     /// <summary>
-    /// Актуализира съществуващ филм по ID.
+    /// Updates an existing movie by ID.
     /// </summary>
-    /// <param name="id">ID на филма, който ще се актуализира.</param>
-    /// <param name="movie">Обект с новата информация за филма.</param>
-    /// <returns>NoContent (HTTP 204) след успешна актуализация.</returns>
+    /// <param name="id">The ID of the movie to be updated.</param>
+    /// <param name="movie">An object with the new information for the movie.</param>
+    /// <returns>NoContent (HTTP 204) after a successful update.</returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateMovie(int id, Movie movie)
     {
@@ -77,10 +77,10 @@ public class MoviesController : ControllerBase
     }
 
     /// <summary>
-    /// Изтрива филм от базата данни по ID.
+    /// Deletes a movie from the database by ID.
     /// </summary>
-    /// <param name="id">ID на филма, който ще бъде изтрит.</param>
-    /// <returns>NoContent (HTTP 204) след успешно изтриване.</returns>
+    /// <param name="id">The ID of the movie to be deleted.</param>
+    /// <returns>NoContent (HTTP 204) after successful deletion.</returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteMovie(int id)
     {
