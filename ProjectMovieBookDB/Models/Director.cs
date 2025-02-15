@@ -1,9 +1,8 @@
 ﻿namespace ProjectMovieBookDB.Models;
 
-public class Genre
+public class Director
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public List<Book> Books { get; set; } = new();
     public List<Movie> Movies { get; set; } = new();
 }

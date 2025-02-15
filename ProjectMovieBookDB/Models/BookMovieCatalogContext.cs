@@ -4,11 +4,12 @@ using System.Reflection.Emit;
 
 namespace ProjectMovieBookDB.Models;
 
-public class BookCatalogContext : DbContext
+public class BookMovieCatalogContext : DbContext
 {
     public DbSet<Book> Books { get; set; }
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Author> Authors { get; set; }
+    public DbSet<Director> Directors { get; set; }
     public DbSet<Genre> Genres { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -21,8 +22,17 @@ public class BookCatalogContext : DbContext
             .WithMany(a => a.Books)
             .HasForeignKey(b => b.AuthorId);
 
+        modelBuilder.Entity<Movie>()
+               .HasOne(m => m.Director)
+               .WithMany(d => d.Movies)
+               .HasForeignKey(m => m.DirectorId);
+
         modelBuilder.Entity<Book>()
             .HasMany(b => b.Genres)
             .WithMany(g => g.Books);
+
+        modelBuilder.Entity<Movie>()
+                .HasMany(m => m.Genres)
+                .WithMany(g => g.Movies);
     }
 }
