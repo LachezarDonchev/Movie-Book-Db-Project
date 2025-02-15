@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectMovieBookDB.Models;
 
@@ -11,18 +11,18 @@ public class GenresController : ControllerBase
     private readonly BookMovieCatalogContext _context;
 
     /// <summary>
-    /// Конструктор на контролера, който приема контекста на базата данни.
+    /// Constructor of the controller that accepts the database context.
     /// </summary>
-    /// <param name="context">Контекст на базата данни за работа с жанрове.</param>
+    /// <param name="context">Database context for working with genres.</param>
     public GenresController(BookMovieCatalogContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Извлича всички жанрове от базата данни.
+    /// Retrieves all genres from the database.
     /// </summary>
-    /// <returns>Списък с всички жанрове, включително свързаните с тях книги и филми.</returns>
+    /// <returns>A list of all genres, including the related books and movies.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Genre>>> GetGenres()
     {
@@ -30,10 +30,10 @@ public class GenresController : ControllerBase
     }
 
     /// <summary>
-    /// Извлича конкретен жанр по ID.
+    /// Retrieves a specific genre by ID.
     /// </summary>
-    /// <param name="id">ID на жанра, който ще се извлече.</param>
-    /// <returns>Жанр с неговите свързани книги и филми или NotFound, ако не е намерен.</returns>
+    /// <param name="id">The ID of the genre to be retrieved.</param>
+    /// <returns>The genre with its related books and movies, or NotFound if not found.</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<Genre>> GetGenre(int id)
     {
@@ -47,10 +47,10 @@ public class GenresController : ControllerBase
     }
 
     /// <summary>
-    /// Създава нов жанр в базата данни.
+    /// Creates a new genre in the database.
     /// </summary>
-    /// <param name="genre">Обект с информация за новия жанр.</param>
-    /// <returns>Новосъздаден жанр със статус 201 Created.</returns>
+    /// <param name="genre">An object with information about the new genre.</param>
+    /// <returns>The newly created genre with status 201 Created.</returns>
     [HttpPost]
     public async Task<ActionResult<Genre>> CreateGenre(Genre genre)
     {
@@ -60,11 +60,11 @@ public class GenresController : ControllerBase
     }
 
     /// <summary>
-    /// Актуализира съществуващ жанр по ID.
+    /// Updates an existing genre by ID.
     /// </summary>
-    /// <param name="id">ID на жанра, който ще се актуализира.</param>
-    /// <param name="genre">Обект с новата информация за жанра.</param>
-    /// <returns>NoContent (HTTP 204) след успешна актуализация.</returns>
+    /// <param name="id">The ID of the genre to be updated.</param>
+    /// <param name="genre">An object with the new information for the genre.</param>
+    /// <returns>NoContent (HTTP 204) after a successful update.</returns>
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateGenre(int id, Genre genre)
     {
@@ -77,10 +77,10 @@ public class GenresController : ControllerBase
     }
 
     /// <summary>
-    /// Изтрива жанр от базата данни по ID.
+    /// Deletes a genre from the database by ID.
     /// </summary>
-    /// <param name="id">ID на жанра, който ще бъде изтрит.</param>
-    /// <returns>NoContent (HTTP 204) след успешно изтриване.</returns>
+    /// <param name="id">The ID of the genre to be deleted.</param>
+    /// <returns>NoContent (HTTP 204) after successful deletion.</returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteGenre(int id)
     {
