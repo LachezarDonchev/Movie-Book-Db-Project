@@ -9,36 +9,36 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
 
     /// <summary>
-    /// Конструктор на контролера, който приема логър за запис на събития.
+    /// Constructor of the controller that accepts a logger for event logging.
     /// </summary>
-    /// <param name="logger">Логър за запис на събития в приложението.</param>
+    /// <param name="logger">A logger for logging events in the application.</param>
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
     }
 
     /// <summary>
-    /// Действие, което връща началната страница (Index).
+    /// Action that returns the home page (Index).
     /// </summary>
-    /// <returns>Връща изглед за началната страница.</returns>
+    /// <returns>Returns the view for the home page.</returns>
     public IActionResult Index()
     {
         return View();
     }
 
     /// <summary>
-    /// Действие, което връща страница с информация за поверителност.
+    /// Action that returns the privacy policy page.
     /// </summary>
-    /// <returns>Връща изглед за страницата с политика за поверителност.</returns>
+    /// <returns>Returns the view for the privacy policy page.</returns>
     public IActionResult Privacy()
     {
         return View();
     }
 
     /// <summary>
-    /// Действие, което показва страницата за грешки.
+    /// Action that shows the error page.
     /// </summary>
-    /// <returns>Връща изглед за грешки с уникален идентификатор на заявката.</returns>
+    /// <returns>Returns the view for the error page with a unique request identifier.</returns>
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
